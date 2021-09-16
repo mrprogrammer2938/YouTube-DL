@@ -5,6 +5,10 @@ import os
 import time
 import sys
 import platform
+try:
+    from pytube import YouTube
+except ImportError:
+    os.system("pip3 install pytube")
 system = platform.uname()[0]
 def title():
     if system == 'Linux':
@@ -22,17 +26,14 @@ def cls():
     else:
         print("\nPlease, Run This Programm as Root!")
         sys.exit()
-try:
-    from pytube import YouTube
-except ImportError:
-    os.system("pip3 install pytube")
 def main():
     title()
     cls()
     print("Usage: Ctrl + C To Exit (～￣▽￣)～\n")
-    host = input("\nEnter youtube link: ")
+    link = input("\nEnter youtube link: ")
     time.sleep(1)
-    run = YouTube(host)
+    run = YouTube(link)
+    print(run)
     print("----------------------------------\n" + run)
     try1()
 def try1():
